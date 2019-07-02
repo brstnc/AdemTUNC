@@ -29,6 +29,20 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="file" name="category_img" class="form-control"
+                           title="Kategori Resmi">
+                </div>
+            </div>
+        </div>
+        @if ($errors->has('category_img'))
+            <div class="alert alert-danger nomargin">
+                {{ $errors->first('category_img') }}
+            </div> <br>
+        @endif
+
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 @endsection

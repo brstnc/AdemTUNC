@@ -15,22 +15,20 @@ class CreateUserDetailTable extends Migration
     {
         Schema::create('user_detail', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->unsigned()->unique();
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
-            $table->string('mail')->nullable();
             $table->text('content')->nullable();
             $table->text('user_img')->nullable();
             $table->text('facebook_url')->nullable();
             $table->text('twitter_url')->nullable();
             $table->text('instagram_url')->nullable();
             $table->text('youtube_url')->nullable();
-            $table->text('linkedIn_url')->nullable();
+            $table->text('linkedin_url')->nullable();
 
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+
         });
     }
 

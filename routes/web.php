@@ -39,6 +39,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/update/{id}', 'Admin\UserController@form')->name('admin.user.update');
     Route::post('/save/{id}', 'Admin\UserController@save')->name('admin.user.save');
     Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
+    Route::get('/user/user-detail', 'Admin\UserController@user_detail')->name('admin.user.user_detail');
 });
 Route::group(['prefix' => 'product'], function () {
             Route::match(['get', 'post'], '/', 'Admin\ProductController@index')->name('admin.product');

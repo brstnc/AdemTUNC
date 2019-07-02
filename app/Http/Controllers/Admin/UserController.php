@@ -44,7 +44,10 @@ class UserController extends Controller
 
         return redirect()->route('admin.user');
     }
-
+    public function user_detail()
+    {
+        return view('admin.user.user_detail');
+    }
     public function delete($id)
     {
         User::destroy($id);
