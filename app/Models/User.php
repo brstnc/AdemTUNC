@@ -15,5 +15,8 @@ class User extends Model
     protected $hidden = [
         'password'
     ];
-
+    public function detail()
+    {
+        return $this->hasOne('App\Models\UserDetail')->withDefault();
+    }
 }

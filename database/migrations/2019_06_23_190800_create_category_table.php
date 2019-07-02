@@ -17,6 +17,7 @@ class CreateCategoryTable extends Migration
             $table->increments('id');
             $table->integer('up_id')->nullable();
             $table->string('category_name', 30);
+            $table->text('ctegory_img');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             $table->timestamp('deleted_at')->nullable();
