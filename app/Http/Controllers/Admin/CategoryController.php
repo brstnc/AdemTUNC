@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-    public function index($id=0)
+    public function index()
     {
         // $list = DB::table('category AS C')
         //    ->select(['C.id', 'C.category_name', 'C.slug', 'category.category_name AS cname', 'C.created_at'])
@@ -21,33 +21,65 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('list'));
     }
 
-    public function form($id = 0)
+    public function create()
     {
-        $entry = new Category();
-        if ( $id>0 ) {
-            $entry = Category::find($id);
-        }
-        $categories = Category::all()->where('up_id', null);
-        return view('admin.category.form', compact('entry', 'categories'));
-    }
 
-    public function save($id = 0)
+        $up_categories = Category::all()->where('up_id', null);
+        return view('admin.category.create', compact('up_categories'));
+
+    }
+    public function create_post(Request $request)
     {
-        $this->validate(request(), [
+        $request->validate([
+            'category_name' => 'required',
+            'category_img' => 'image'
+        ]);
+
+        $data = new Category();
+        $data->category_name = $request->category_name;
+        $data->up_id = $request->up_id;
+
+        $file = $request->category_img;
+        $name = time() . '.jpg';
+        $file->move('img/category/', $name);
+        $adres = '/img/category' . '/' . $name;
+        $data->category_img = $adres;
+
+        $data->saveOrFail();
+
+        return redirect()->route('admin.category.index');
+
+    }
+    public function edit($id)
+    {
+
+        $up_categories = Category::all()->where('up_id', null);
+        $category = Category::find($id);
+
+        return view('admin.category.edit', compact('up_categories', 'category'));
+
+    }
+    public function edit_post(Request $request, $id)
+    {
+        $request->validate([
             'category_name' => 'required',
         ]);
 
-        $data = request()->only('category_name', 'up_id');
+        $data = new Category();
+        $data->category_name = $request->category_name;
+        $data->up_id = $request->up_id;
 
-        if ($id>0) {
-            $entry = Category::where('id', $id)->firstOrFail();
-            $entry->update($data);
-
-        } else {
-            $entry = Category::create($data);
+        if ($request->hasFile('category_img')) {
+            $file = $request->category_img;
+            $name = time() . '.jpg';
+            $file->move('img/category/', $name);
+            $adres = 'img/category/' . '/' . $name;
+            $data->category_img = $adres;
         }
 
-        return redirect()->route('admin.category');
+        $data->saveOrFail();
+
+        return redirect()->route('admin.category.index');
     }
 
     public function delete($id)

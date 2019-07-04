@@ -28,10 +28,10 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'category'], function () {
     Route::match(['get', 'post'], '/', 'Admin\CategoryController@index')->name('admin.category');
-    Route::get('/new', 'Admin\CategoryController@form')->name('admin.category.new');
-    Route::get('/update/{id}', 'Admin\CategoryController@form')->name('admin.category.update');
-    Route::post('/save/{id?}', 'Admin\CategoryController@save')->name('admin.category.save');
-    Route::get('/delete/{id}', 'Admin\CategoryController@delete')->name('admin.category.delete');
+    Route::get('/create', 'Admin\CategoryController@create')->name('admin.category.create');
+    Route::post('/create', 'Admin\CategoryController@create_post');
+    Route::get('/edit/{id}', 'Admin\CategoryController@edit')->name('admin.category.edit');
+    Route::post('/edit/{id}', 'Admin\CategoryController@edit_post');
 });
 
 Route::group(['prefix' => 'user'], function () {
@@ -39,7 +39,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/update/{id}', 'Admin\UserController@form')->name('admin.user.update');
     Route::post('/save/{id}', 'Admin\UserController@save')->name('admin.user.save');
     Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
-    Route::get('/user/user-detail', 'Admin\UserController@user_detail')->name('admin.user.user_detail');
+    Route::get('/detail', 'Admin\UserController@user_detail')->name('admin.user.user_detail');
 });
 Route::group(['prefix' => 'product'], function () {
             Route::match(['get', 'post'], '/', 'Admin\ProductController@index')->name('admin.product');

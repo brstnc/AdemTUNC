@@ -7,7 +7,7 @@
     </h2>
     <div class="table-responsive">
         <div class="btn-primary pull-right">
-            <a href="{{ route('admin.category.new') }}" class="btn btn-primary">Yeni</a>
+            <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Yeni</a>
         </div>
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
@@ -25,7 +25,7 @@
                     <td>{{ $entry->up_category->category_name}}</td>
                     <td>{{ $entry->created_at }}</td>
                     <td style="width: 100px">
-                       <a href="{{ route('admin.category.update', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                       <a href="{{ route('admin.category.edit', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
                            <span class="fa fa-pencil"></span>
                        </a>
                         <a href="{{ route('admin.category.delete', $entry->id) }}" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('{{$entry->category_name }} Kişisini silmek istediğinize emin misin?')">
