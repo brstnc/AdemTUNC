@@ -21,14 +21,11 @@ class CreateUserDetailTable extends Migration
             $table->string('fax')->nullable();
             $table->text('content')->nullable();
             $table->text('user_img')->nullable();
+            $table->text('company_img')->nullable();
             $table->text('facebook_url')->nullable();
             $table->text('twitter_url')->nullable();
             $table->text('instagram_url')->nullable();
             $table->text('youtube_url')->nullable();
-            $table->text('linkedin_url')->nullable();
-
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
-
         });
     }
 

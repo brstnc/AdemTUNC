@@ -11,10 +11,15 @@ class Product extends Model
 
     protected $table = "product";
     protected $guarded = [];
+    protected $fillable = [
+        'content',
+        'product_img',
+        'product_name'
+    ];
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category', 'category_product');
+        return $this->belongsToMany('App\Models\CategoryProduct', 'product_id');
     }
 
     public function detail()

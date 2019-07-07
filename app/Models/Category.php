@@ -11,15 +11,20 @@ class Category extends Model
 
     protected  $table = "category";
     protected $guarded = [];
+    protected $fillable = [
+        'up_id',
+        'images_url',
+        'category_name'
+    ];
 
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product', 'category_product');
+        return $this->belongsToMany(CategoryProduct::class, 'category_id');
     }
 
     public function up_category()
     {
-        return $this->belongsTo('App\Models\Category', 'up_id')->withDefault([
+        return $this->belongsTo(Category::class, 'up_id')->withDefault([
             'category_name' => 'Ana Kategori'
         ]);
     }

@@ -9,6 +9,10 @@ class ProductDetail extends Model
     protected $table = 'product_detail';
     public $timestamps = false;
     protected  $guarded = [];
+    protected $fillable = [
+        'product_id',
+        'product_img',
+    ];
 
 
     public function product()

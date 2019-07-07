@@ -14,7 +14,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#">Profil Düzenle</a>
+                            <a href="{{ route('admin.user.detail') }}">Profil Düzenle</a>
                         </li>
                         <li>
                             <a href="#">Çıkış</a>

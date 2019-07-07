@@ -23,33 +23,33 @@ class CategoryController extends Controller
 
     public function create()
     {
-
         $up_categories = Category::all()->where('up_id', null);
         return view('admin.category.create', compact('up_categories'));
-
     }
+
     public function create_post(Request $request)
     {
         $request->validate([
             'category_name' => 'required',
-            'category_img' => 'image'
-        ]);
+            'category_img'=> 'required'
 
+        ]);
         $data = new Category();
         $data->category_name = $request->category_name;
         $data->up_id = $request->up_id;
 
         $file = $request->category_img;
         $name = time() . '.jpg';
-        $file->move('img/category/', $name);
-        $adres = '/img/category' . '/' . $name;
+        $file->move('images/category/', $name);
+        $adres = '/images/category' . '/' . $name;
         $data->category_img = $adres;
 
-        $data->saveOrFail();
+        $data->save();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category');
 
     }
+
     public function edit($id)
     {
 
@@ -65,21 +65,21 @@ class CategoryController extends Controller
             'category_name' => 'required',
         ]);
 
-        $data = new Category();
+        $data = Category::find($id);
         $data->category_name = $request->category_name;
         $data->up_id = $request->up_id;
 
         if ($request->hasFile('category_img')) {
             $file = $request->category_img;
             $name = time() . '.jpg';
-            $file->move('img/category/', $name);
-            $adres = 'img/category/' . '/' . $name;
+            $file->move('images/category/', $name);
+            $adres = '/images/category' . '/' . $name;
             $data->category_img = $adres;
         }
 
         $data->saveOrFail();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category');
     }
 
     public function delete($id)
