@@ -143,8 +143,10 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Category::all();
+        $entry = Product::find($id);
 
-
+        return view('admin.product.edit', compact('entry', 'categories'));
 
     }
     public function edit_post(Request $request, $id)

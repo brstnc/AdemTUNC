@@ -17,6 +17,7 @@ class CreateProductTable extends Migration
             $table->increments('id');
             $table->string('product_name', '60');
             $table->text('content');
+            $table->integer('order')->nullable();
             $table->text('product_img');
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
