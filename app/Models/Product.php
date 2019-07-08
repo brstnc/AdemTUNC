@@ -19,11 +19,11 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\CategoryProduct', 'product_id');
+        return $this->hasMany('App\Models\CategoryProduct', 'product_id');
     }
 
     public function detail()
     {
-        return $this->hasOne('App\Models\ProductDetail')->withDefault();
+        return $this->hasMany('App\Models\ProductDetail')->withDefault();
     }
 }
