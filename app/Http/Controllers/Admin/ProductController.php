@@ -13,18 +13,7 @@ class ProductController extends Controller
 {
     public function index($id=0)
     {
-        $product_categories = [];
-        $entry = Product::find(1);
-        $product_categories = $entry->categories()->pluck('category_id')->all();
-
-        foreach ($product_categories as $product_category) {
-
-            echo $product_category . "<br>";
-        }
-
-        exit;
-        $list = Product::orderbyDesc('id')->paginate(8);
-
+        $list = Product::with('categories', 'categories.category')->orderbyDesc('id')->paginate(8);
         return view('admin.product.index', compact('list'));
     }
 

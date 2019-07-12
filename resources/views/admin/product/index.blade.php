@@ -15,6 +15,7 @@
                 <th>Resim</th>
                 <th>Ürün Adı</th>
                 <th>Açıklama</th>
+                <th>Kategoriler</th>
                 <th>Kayıt Tarihi</th>
                 <th>Operasyonlar</th>
             </tr>
@@ -28,6 +29,13 @@
                     </td>
                     <td>{{ $entry->product_name }}</td>
                     <td>{{ $entry->content}}</td>
+                    <td>
+                        <ul>
+                            @foreach($entry->categories as $category)
+                                <li>{{ $category->category->category_name }}</li>
+                            @endforeach
+                        </ul>
+                    </td>
                     <td>{{ $entry->created_at }}</td>
                     <td style="width: 100px">
                        <a href="{{ route('admin.product.edit', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
