@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Company;
 use App\Models\User;
+use App\Models\UserDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -25,17 +26,24 @@ class AdminController extends Controller
             'email' => 'required|email|',
             'password' => 'required'
         ]);
+//
+//        $credentials = [
+//            "email" => "baristunc_04@hotmail.com",
+//            "password" => "asdasd",
+//            "admin" => 1
+//        ];
 
-        $credentials = [
-            'email' => request('email'),
-            'password' => request('password'),
-            'active' => 1
-        ];
+       // $user = User::where('email', $request->email)->first();
+
+      //  dd($user);
+        $credentials = request(['email', 'password']);
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin.homepage');
-        } else {
-            return 'else';
-            $errors = ['mail' => 'Hatalı giriş. Veya hesabınızı aktifleştirin'];
+
+
+        }
+        else{
+            $errors = ['mail' => 'Hatalı giriş.'];
             return back()->withErrors($errors);
         }
 
@@ -59,8 +67,13 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make(request('password'));
 
-
         $user->saveOrFail();
+
+        $user_detail = new UserDetail();
+        $user_detail->user_id = $user->id;
+
+        $user_detail->saveOrFail();
+
 
         return redirect()->route('admin.homepage');
     }
@@ -68,7 +81,7 @@ class AdminController extends Controller
     //Oturum Kapatma
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        \auth()->logout();
         request()->session()->flush();
         request()->session()->regenerate();
         return redirect()->route('admin.signin');

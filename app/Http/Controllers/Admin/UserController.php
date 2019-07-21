@@ -47,14 +47,14 @@ class UserController extends Controller
 
     public function user_detail_get()
     {
-        $user = User::find(1);
 
+        $user = User::find(auth()->id());
         return view('admin.user.user_detail', compact('user'));
     }
 
     public function user_detail_post(Request $request)
     {
-        $user = User::find(1);
+        $user = User::find(auth()->id());
         $user->name = $request->name;
         if (Input::get('password') == '') {
             $user->name = Input::get('name');
@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $user->saveOrFail();
 
-        $detail = UserDetail::find('$user->id');
+        $detail = UserDetail::where('user_id', auth()->id())->first();
 
         $detail->content = $request->content;
 

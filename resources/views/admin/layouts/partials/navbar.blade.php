@@ -17,7 +17,7 @@
                             <a href="{{ route('admin.user.detail') }}">Profil Düzenle</a>
                         </li>
                         <li>
-                            <a href="#">Çıkış</a>
+                            <a href="{{ route('admin.logout') }}">Çıkış</a>
                         </li>
                     </ul>
                 </li>

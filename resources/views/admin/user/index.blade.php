@@ -12,9 +12,9 @@
                 <th>id</th>
                 <th>Ad Soyad</th>
                 <th>Email</th>
-                <th>Statü</th>
+{{--                <th>Statü</th>--}}
                 <th>Kayıt Tarihi</th>
-                <th>Operasyonlar</th>
+{{--                <th>Operasyonlar</th>--}}
             </tr>
             </thead>
             <tbody>
@@ -23,22 +23,22 @@
                     <td>{{ $entry->id }}</td>
                     <td>{{ $entry->name }}</td>
                     <td>{{ $entry->email }}</td>
-                    <td>
-                        @if ($entry->admin)
-                            <span class="label label-success">Yönetici</span>
-                        @else
-                            <span class="label label-warning">Yönetici Değil</span>
-                        @endif
-                    </td>
+{{--                    <td>--}}
+{{--                        @if ($entry->admin)--}}
+{{--                            <span class="label label-success">Yönetici</span>--}}
+{{--                        @else--}}
+{{--                            <span class="label label-warning">Yönetici Değil</span>--}}
+{{--                        @endif--}}
+{{--                    </td>--}}
                     <td>{{ $entry->created_at }}</td>
-                    <td style="width: 100px">
-                       <a href="{{ route('admin.user.update', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
-                           <span class="fa fa-pencil" ></span>
-                       </a>
-                        <a href="{{ route('admin.user.delete', $entry->id) }}" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('{{$entry->name_lastname }} Kişisini silmek istediğinize emin misin?')">
-                        <span class="fa fa-trash"></span>
-                        </a>
-                    </td>
+{{--                    <td style="width: 100px">--}}
+{{--                       <a href="{{ route('admin.user.update', $entry->id) }}" class="btn btn-s btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">--}}
+{{--                           <span class="fa fa-pencil" ></span>--}}
+{{--                       </a>--}}
+{{--                        <a href="{{ route('admin.user.delete', $entry->id) }}" class="btn btn-s btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('{{$entry->name_lastname }} Kişisini silmek istediğinize emin misin?')">--}}
+{{--                        <span class="fa fa-trash"></span>--}}
+{{--                        </a>--}}
+{{--                    </td>--}}
                 </tr>
             @endforeach
             </tbody>
