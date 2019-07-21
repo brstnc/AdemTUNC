@@ -16,16 +16,8 @@ class CreateUserDetailTable extends Migration
         Schema::create('user_detail', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned()->unique();
-            $table->string('address')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('fax')->nullable();
             $table->text('content')->nullable();
             $table->text('user_img')->nullable();
-            $table->text('company_img')->nullable();
-            $table->text('facebook_url')->nullable();
-            $table->text('twitter_url')->nullable();
-            $table->text('instagram_url')->nullable();
-            $table->text('youtube_url')->nullable();
         });
     }
 

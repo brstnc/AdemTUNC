@@ -14,6 +14,7 @@
             <tr>
                 <th>Resim</th>
                 <th>Ürün Adı</th>
+                <th>Ürün Sırası</th>
                 <th>Açıklama</th>
                 <th>Kategoriler</th>
                 <th>Kayıt Tarihi</th>
@@ -28,6 +29,7 @@
                              src="{{ url($entry->product_img) }}">
                     </td>
                     <td>{{ $entry->product_name }}</td>
+                    <td>{{ $entry->order }}</td>
                     <td>{{ $entry->content}}</td>
                     <td>
                         <ul>

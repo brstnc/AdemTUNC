@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,8 @@ class AdminController extends Controller
     // Kulanıcı Giriş
     public function signin()
     {
-
-        return view('admin.signin');
+        $company_img = Company::all()->first();
+        return view('admin.signin', compact('company_img'));
     }
 
     public function signin_post(Request $request)
@@ -30,9 +31,7 @@ class AdminController extends Controller
             'password' => request('password'),
             'active' => 1
         ];
-        dd(Auth::attempt(['email' => request('email'), 'password' => request('password'), 'active' => 1]));
         if (Auth::attempt($credentials)) {
-            return 'if';
             return redirect()->route('admin.homepage');
         } else {
             return 'else';

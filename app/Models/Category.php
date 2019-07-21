@@ -12,20 +12,17 @@ class Category extends Model
     protected  $table = "category";
     protected $guarded = [];
     protected $fillable = [
-        'up_id',
         'images_url',
         'category_name'
     ];
 
-    public function productss()
+    public function products()
     {
         return $this->hasMany(CategoryProduct::class, 'category_id');
     }
 
-    public function up_category()
+    public function up_categories()
     {
-        return $this->belongsTo(Category::class, 'up_id')->withDefault([
-            'category_name' => 'Ana Kategori'
-        ]);
+        return $this->hasMany(Categories::class, 'sub_category_id');
     }
 }

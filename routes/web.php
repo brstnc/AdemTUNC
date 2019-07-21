@@ -10,20 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {
     return view('welcome');
 });
-    Route::group(['prefix' => 'admin'], function () {
-        Route::get('/', 'Admin\AdminController@signin')->name('admin.signin');
-        Route::post('/', 'Admin\AdminController@signin_post');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'Admin\AdminController@signin')->name('admin.signin');
+    Route::post('/', 'Admin\AdminController@signin_post');
 
-        Route::get('/signup', 'Admin\AdminController@signup')->name('admin.signup');
-        Route::post('/signup', 'Admin\AdminController@signup_post');
-
-        Route::group(['middleware' => ['auth']], function () {
-        Route::get('/admin/homepage', 'Admin\HomepageController@index')->name('admin.homepage');
-    });
+    Route::get('/signup', 'Admin\AdminController@signup')->name('admin.signup');
+    Route::post('/signup', 'Admin\AdminController@signup_post');
+    Route::get('/homepage', 'Admin\HomepageController@index')->name('admin.homepage');
 });
 
 Route::group(['prefix' => 'category'], function () {
@@ -33,7 +31,18 @@ Route::group(['prefix' => 'category'], function () {
     Route::get('/edit/{id}', 'Admin\CategoryController@edit')->name('admin.category.edit');
     Route::post('/edit/{id}', 'Admin\CategoryController@edit_post');
     Route::get('/delete/{id}', 'Admin\CategoryController@delete')->name('admin.category.delete');
-
+});
+Route::group(['prefix' => 'company'], function () {
+    Route::get('/', 'Admin\CompanyController@form')->name('admin.company_detail');
+    Route::post('/', 'Admin\CompanyController@form_post');
+});
+Route::group(['prefix' => 'upcategory'], function () {
+    Route::match(['get', 'post'], '/', 'Admin\UpCategoryController@index')->name('admin.upcategory');
+    Route::get('/create', 'Admin\UpCategoryController@create')->name('admin.upcategory.create');
+    Route::post('/create', 'Admin\UpCategoryController@create_post');
+    Route::get('/edit/{id}', 'Admin\UpCategoryController@edit')->name('admin.upcategory.edit');
+    Route::post('/edit/{id}', 'Admin\UpCategoryController@edit_post');
+    Route::get('/delete/{id}', 'Admin\UpCategoryController@delete')->name('admin.upcategory.delete');
 });
 
 
@@ -54,33 +63,5 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
     Route::get('/detail', 'Admin\UserController@user_detail_get')->name('admin.user.detail');
     Route::post('/detail', 'Admin\UserController@user_detail_post');
-
 });
 
-
-
-
-//Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-//    Route::redirect('/', 'admin/signin');
-//    Route::match(['get','post'],'/signin', 'AuthController@signin')->name('admin.signin');
-//    Route::get('/logout', 'AuthController@logout')->name('admin.logout');
-//    Route::group(['middleware' => 'admin'], function () {
-//        Route::get('/homepage', 'HomePageController@index')->name('admin.homepage');
-//
-//        Route::group(['prefix' => 'user'], function () {
-//            Route::match(['get', 'post'], '/', 'UserController@index')->name('admin.user');
-//            Route::get('/update/{id}', 'UserController@form')->name('admin.user.update');
-//            Route::post('/save/{id}', 'UserController@save')->name('admin.user.save');
-//            Route::get('/delete/{id}', 'UserController@delete')->name('admin.user.delete');
-//        });
-//
-//
-//        Route::group(['prefix' => 'order'], function () {
-//            Route::match(['get', 'post'], '/', 'OrderController@index')->name('admin.order');
-//            Route::get('/new', 'OrderController@form')->name('admin.order.new');
-//            Route::get('/update/{id}', 'OrderController@form')->name('admin.order.update');
-//            Route::post('/save/{id}', 'OrderController@save')->name('admin.order.save');
-//            Route::get('/delete/{id}', 'OrderController@delete')->name('admin.order.delete');
-//        });
-//    });
-//});

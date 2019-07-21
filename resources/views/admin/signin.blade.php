@@ -11,7 +11,13 @@
 <div class="container">
     <form class="form-signin" method="post" action="{{ route('admin.signin') }}">
         {{ csrf_field() }}
-        <img src="#" class="logo">
+        <img src=
+             @if($company_img)
+                     "{{ $company_img->company_img }}"
+             @else
+            "#"
+                @endif
+              class="logo">
         <label for="email" class="sr-only">Email address</label>
         <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
         <label for="password" class="sr-only">Password</label>

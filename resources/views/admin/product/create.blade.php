@@ -29,6 +29,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ürün Sıralaması</label>
+                    <input type="text" class="form-control" name="order" id="order"
+                           placeholder="Kategori Sıralaması">
+                </div>
+            </div>
+        </div>
+        @if ($errors->has('order'))
+            <div class="alert alert-danger nomargin">
+                {{ $errors->first('order') }}
+            </div> <br>
+        @endif
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">

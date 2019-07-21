@@ -1,30 +1,29 @@
 @extends('admin.layouts.master')
 @section('title', 'Kategori Düzenleme')
 @section('content')
-    <h1 class="page-header">Kategori Ekleme</h1>
+    <h1 class="page-header">Alt Kategori Ekleme</h1>
     <h2 class="sub-header">Form</h2>
-    <form role="form" method="post" enctype="multipart/form-data" action="{{ route('admin.category.create') }}">
+    <form role="form" method="POST" enctype="multipart/form-data" action="{{ route('admin.category.create') }}">
         {{ csrf_field() }}
         @include('admin.layouts.partials.errors')
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Üst Kategorisi</label>
-                    <select name="up_id" id="up_id" class="form-control">
-                        <option value="">Ana Kategori</option>
-                        @foreach($up_categories as $up_category)
-                            <option value="{{ $up_category->id }}">{{ $up_category->category_name }}</option>
+                    <label for="categories[]">Üst Kategoriler</label>
+                    <select class="form-control" name="categories[]" id="categories" multiple>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                         @endforeach
                     </select>
-                    <p>(Üst kategori seçilmediği durumda kayıt, üst kategori olarak ayarlanır.)</p>
                 </div>
             </div>
         </div>
-        @if ($errors->has('up_id'))
+        @if ($errors->has('upcategories'))
             <div class="alert alert-danger nomargin">
-                {{ $errors->first('up_id') }}
+                {{ $errors->first('upcategories') }}
             </div> <br>
         @endif
+        <hr/>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -39,9 +38,26 @@
                 {{ $errors->first('category_name') }}
             </div> <br>
         @endif
+        <hr/>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Kategori Sıralaması</label>
+                    <input type="text" class="form-control" name="order" id="order"
+                           placeholder="Kategori Sıralaması">
+                </div>
+            </div>
+        </div>
+        @if ($errors->has('order'))
+            <div class="alert alert-danger nomargin">
+                {{ $errors->first('order') }}
+            </div> <br>
+        @endif
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kategori Resmi</label>
                     <input type="file" name="category_img" class="form-control"
                            title="Kategori Resmi">
                 </div>
@@ -55,4 +71,22 @@
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 @endsection
+@section('head')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+@endsection
+@section('footer')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
+    <script>
+        $(function () {
+            $('#categories').select2({
+                placeholder: 'Lütfen kategori seçiniz'
+            })
+        })
+    </script>
+@endsection
+@if ($errors->has('upcategories'))
+    <div class="alert alert-danger nomargin">
+        {{ $errors->first('upcategories') }}
+    </div> <br>
+@endif
