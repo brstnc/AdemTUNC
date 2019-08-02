@@ -11,7 +11,8 @@
 */
 Route::get('/', 'HomeController@index')->name('front.homepage');
 
-Route::get('/categories/{id}', 'HomeController@categories')->name('front.categories');
+Route::get('/categories/{id}', 'CategoryController@categories')->name('front.categories');
+Route::get('/products/{id}', 'ProductsController@index')->name('front.products');
 
 
 Route::group(['prefix' => 'admin'], function () {

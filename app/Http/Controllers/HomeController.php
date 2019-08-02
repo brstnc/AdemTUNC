@@ -29,9 +29,5 @@ class HomeController extends Controller
         return view('front.homepage', compact('up_categories'));
     }
 
-    public function categories($id)
-    {
-        $categories = UpCategory::with('sub_categories', 'sub_categories.sub_categories')->where('id', $id)->get();
-        return view('front.category', compact('categories'));
-    }
+
 }

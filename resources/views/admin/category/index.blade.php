@@ -26,7 +26,7 @@
                     <td>
                         <ul>
                             @foreach($entry->up_categories as $category)
-                                <li>{{ $category->up_categories->category_name }}</li>
+                                <li>{{ $category->up_category->category_name }}</li>
                             @endforeach
                         </ul>
                     </td>                    <td>{{ $entry->order}}</td>

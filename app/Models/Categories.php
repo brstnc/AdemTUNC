@@ -9,12 +9,12 @@ class Categories extends Model
     protected  $table = "categories";
     protected $guarded = [];
 
-    public function sub_categories()
+    public function sub_category()
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'sub_category_id');
     }
 
-    public function up_categories()
+    public function up_category()
     {
         return $this->belongsTo(UpCategory::class, 'up_category_id');
     }

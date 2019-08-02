@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $list = Category::with('up_categories', 'up_categories.up_categories')->orderbyDesc('order')->paginate(8);
+        $list = Category::with('up_categories', 'up_categories.up_category')->orderbyDesc('order')->paginate(8);
         return view('admin.category.index', compact('list'));
     }
 
