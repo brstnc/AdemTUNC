@@ -13,6 +13,10 @@ Route::get('/', 'HomeController@index')->name('front.homepage');
 
 Route::get('/categories/{id}', 'CategoryController@categories')->name('front.categories');
 Route::get('/products/{id}', 'ProductsController@index')->name('front.products');
+Route::get('/product/{id}', 'ProductsController@product')->name('front.product');
+
+Route::get('/contact', 'ContactController@contact')->name('front.contact');
+Route::post('contact', 'ContactController@contact_post');
 
 
 Route::group(['prefix' => 'admin'], function () {

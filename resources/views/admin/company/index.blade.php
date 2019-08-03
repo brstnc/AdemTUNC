@@ -35,8 +35,8 @@
             <div class="col-md-9">
                 <div class="form-group">
                     <label for="address">Firma Adı</label>
-                    <input type="text" class="form-control" name="address" id="address" placeholder="Adres"
-                           value="{{ $company_detail->address}}"
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Adres"
+                           value="{{ $company_detail->name}}"
                     >
                 </div>
             </div>

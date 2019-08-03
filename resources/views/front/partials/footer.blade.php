@@ -1,3 +1,6 @@
+<?php
+$company = App\Models\Company::first();
+?>
 <footer class="footer_area clearfix">
     <div class="container">
         <div class="row align-items-center">
@@ -6,12 +9,20 @@
                 <div class="single_widget_area">
                     <!-- Logo -->
                     <div class="footer-logo mr-50">
-                        <a href="index.html"><img src="/img/core-img/logo2.png" alt=""></a>
+                        <a href="{{ route('front.homepage') }}"><img
+                                    @if($company->company_img)
+                                    src="{{$company->company_img}}"
+                                    @else
+                                    src="/img/core-img/logo2.png"
+                                    @endif
+                                    alt=""></a>
                     </div>
                     <!-- Copywrite Text -->
-                    <p class="copywrite"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    <br>
+                    <h4 style="color:#fbb710 ">  {{ $company->name }}</h4>
+                    <p style="color:#fbb710 ">Adres: {{ $company->address }}</p>
+                    <p style="color:#fbb710 ">Telefon: +9{{ $company->phone }}</p>
+
                 </div>
             </div>
             <!-- Single Widget Area -->
@@ -20,23 +31,17 @@
                     <!-- Footer Menu -->
                     <div class="footer_menu">
                         <nav class="navbar navbar-expand-lg justify-content-end">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent" aria-controls="footerNavContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#footerNavContent" aria-controls="footerNavContent"
+                                    aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i>
+                            </button>
                             <div class="collapse navbar-collapse" id="footerNavContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">Home</a>
+                                        <a class="nav-link" href="{{route('front.homepage')}}">ANASAYFA</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="shop.html">Shop</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="product-details.html">Product</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="cart.html">Cart</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="checkout.html">Checkout</a>
+                                        <a class="nav-link" href="{{route('front.contact')}}">ILETISIM</a>
                                     </li>
                                 </ul>
                             </div>

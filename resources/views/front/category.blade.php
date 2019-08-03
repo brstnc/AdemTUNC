@@ -2,7 +2,7 @@
 @section('title', 'Ana Sayfa')
 @section('content')
     <br>
-    <h3>ALT KATEGORILER</h3>
+    <h3>{{$list['0']['category_name']}} - ALT KATEGORILERI</h3>
     <hr>
 
     <div class="amado-pro-catagory clearfix">

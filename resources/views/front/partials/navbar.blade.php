@@ -47,6 +47,8 @@
                 <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shsdsdsdop</a></li>
                 <li><a href="product-details.html">Product</a></li>
+            </ul>
+        </nav>
         <!-- Social Button -->
         <div class="social-info d-flex justify-content-between">
             <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>

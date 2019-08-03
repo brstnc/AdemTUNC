@@ -18,6 +18,7 @@ class CompanyController extends Controller
     public function form_post(Request $request)
     {
         $company_detail = Company::all()->first();
+        $company_detail->name = $request->name;
         $company_detail->address = $request->address;
         $company_detail->phone = $request->phone;
         $company_detail->fax = $request->fax;
