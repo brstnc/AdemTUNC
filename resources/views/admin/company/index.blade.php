@@ -13,11 +13,14 @@
                     <div class="column">
                         <div class="inner">
                             <a class="zooming"
-                               href="{{ $company_detail->company_img }}"
-                               title="">
+                               @if(isset($company_detail->company_img))
+                                    href="{{ $company_detail->company_img}}"
+                               @else
+                                     href="#">
+                                @endif
                                 <div class="img-wrap">
                                     <img class="img-responsive" style="width: 100px"
-                                         @if($company_detail->company_img !=null )
+                                         @if(isset($company_detail->company_img))
                                          src="{{ $company_detail->company_img}}"
                                          @else
                                          src="http://via.placeholder.com/640x400?text=UrunResmi"

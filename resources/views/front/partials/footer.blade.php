@@ -7,16 +7,6 @@ $company = App\Models\Company::first();
             <!-- Single Widget Area -->
             <div class="col-12 col-lg-4">
                 <div class="single_widget_area">
-                    <!-- Logo -->
-                    <div class="footer-logo mr-50">
-                        <a href="{{ route('front.homepage') }}"><img
-                                    @if($company->company_img)
-                                    src="{{$company->company_img}}"
-                                    @else
-                                    src="/img/core-img/logo2.png"
-                                    @endif
-                                    alt=""></a>
-                    </div>
                     <!-- Copywrite Text -->
                     <br>
                     <h4 style="color:#fbb710 ">  {{ $company->name }}</h4>

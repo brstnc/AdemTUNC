@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="page-header">Kontrol Paneli</h1>
     <section class="row text-center placeholders">
-        <a href="{{ route('admin.category') }}" style="color: #1b1e21">
+        <a href="{{ route('admin.upcategory') }}" style="color: #1b1e21">
             <div class="col-6 col-sm-3">
                 <div class="panel panel-primary">
                     <div class="panel-heading">Üst Kategoriler</div>

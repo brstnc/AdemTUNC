@@ -1,26 +1,24 @@
+<?php
+$categories = \App\Models\Category::all();
+?>
+<!-- Header Area End -->
 
-    <!-- Header Area End -->
+<div class="shop_sidebar_area">
 
-    <div class="shop_sidebar_area">
+    <!-- ##### Single Widget ##### -->
+    <div class="widget catagory mb-50">
+        <!-- Widget Title -->
+        <h6 class="widget-title mb-30">KATEGORILER</h6>
 
-        <!-- ##### Single Widget ##### -->
-        <div class="widget catagory mb-50">
-            <!-- Widget Title -->
-            <h6 class="widget-title mb-30">Catagories</h6>
-
-            <!--  Catagories  -->
-            <div class="catagories-menu">
-                <ul>
-                    <li class="active"><a href="#">Chairs</a></li>
-                    <li><a href="#">Beds</a></li>
-                    <li><a href="#">Accesories</a></li>
-                    <li><a href="#">Furniture</a></li>
-                    <li><a href="#">Home Deco</a></li>
-                    <li><a href="#">Dressings</a></li>
-                    <li><a href="#">Tables</a></li>
-                </ul>
-            </div>
+        <!--  Catagories  -->
+        <div class="catagories-menu">
+            <ul>
+                @foreach($categories as $category)
+                    <li><a href="{{ route('front.products', $category->id) }}">{{ $category->category_name }}</a></li>
+                @endforeach
+            </ul>
         </div>
     </div>
+</div>
 
 <!-- ##### Main Content Wrapper End ##### -->

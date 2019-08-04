@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use PhpParser\Node\Stmt\DeclareDeclare;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -14,11 +15,12 @@ class ContactController extends Controller
 
     public function contact_post(Request $request)
     {
+        return $request;
+
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'phone' => 'numeric'
         ]);
         $contact = new Contact();
         $contact->name = $request->name;
@@ -32,6 +34,6 @@ class ContactController extends Controller
 
         $contact->save();
 
-        return redirect()->route('front.contact');
+        return view('front.contact');
     }
 }

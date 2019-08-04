@@ -9,7 +9,8 @@
                         <div class="cart-title">
                             <h2>ILETISIM</h2>
                         </div>
-                        <form action="{{route('front.contact')}}" method="post">
+                        <form action="{{route('front.contact')}}" method="POST">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <input type="text" class="form-control" id="name" value="" placeholder="ISIM" required>
@@ -36,7 +37,7 @@
                                     <input type="text" class="form-control" id="message" placeholder="MESAJ" value="">
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <a type="submit" class="btn amado-btn w-100">GÖNDER</a>
+                                    <button type="submit" class="btn amado-btn w-100">GÖNDER</button>
                                 </div>
                             </div>
                         </form>

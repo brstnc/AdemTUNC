@@ -2,16 +2,14 @@
 @section('title', 'Ana Sayfa')
 @section('content')
     <div class="main-content-wrapper d-flex clearfix">
-        <div class="single-product-area section-padding-100 clearfix">
+        <div class="single-product-area section-padding-150 clearfix">
             <div class="container-fluid">
 
                 <div class="row">
                     <div class="col-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mt-50">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                                <li class="breadcrumb-item"><a href="#">Chairs</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('front.homepage') }}">ANASAYFA</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">{{ $list->product_name }}</li>
                             </ol>
                         </nav>

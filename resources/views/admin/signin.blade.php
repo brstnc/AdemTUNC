@@ -11,11 +11,11 @@
 <div class="container">
     <form class="form-signin" method="post" action="{{ route('admin.signin') }}">
         {{ csrf_field() }}
-        <img src=
+        <img style="width: 100%"
              @if($company_img)
-                     "{{ $company_img->company_img }}"
+             src="{{ $company_img->company_img }}"
              @else
-            "#"
+             src="#"
                 @endif
               class="logo">
         <label for="email" class="sr-only">Email address</label>
@@ -24,7 +24,7 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required aut>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
         <div class="links">
-            <a href="#">&larr; Siteye geri dön</a>
+            <a href="{{route('front.homepage')}}">&larr; Siteye geri dön</a>
         </div>
     </form>
 </div>

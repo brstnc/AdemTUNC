@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Ürün Sıralaması</label>
                     <input type="text" class="form-control" name="order" id="order"
-                           placeholder="Kategori Sıralaması">
+                           placeholder="Ürün Sıralaması">
                 </div>
             </div>
         </div>
