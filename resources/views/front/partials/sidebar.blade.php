@@ -3,7 +3,7 @@ $categories = \App\Models\Category::all();
 ?>
 <!-- Header Area End -->
 
-<div class="shop_sidebar_area">
+<div class="header-area clearfix">
 
     <!-- ##### Single Widget ##### -->
     <div class="widget catagory mb-50">

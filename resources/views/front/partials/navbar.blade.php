@@ -27,7 +27,7 @@ $categories = App\Models\UpCategory::take(10)->orderByDesc('order')->get();
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">
-            <a href="index.html"><img src="../img/core-img/logo.png" alt=""></a>
+            <a href="{{ route('front.homepage') }}"><img src="{{$company->company_img}}" alt=""></a>
         </div>
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
@@ -38,7 +38,7 @@ $categories = App\Models\UpCategory::take(10)->orderByDesc('order')->get();
     <!-- Header Area Start -->
     <header class="header-area clearfix">
         <!-- Close Icon -->
-        <div class="nav-close">
+        <div class="amado-nav">
             <i class="fa fa-close" aria-hidden="true"></i>
         </div>
         <!-- Logo -->
