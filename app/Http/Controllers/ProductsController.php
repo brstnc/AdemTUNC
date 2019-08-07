@@ -10,7 +10,7 @@ class ProductsController extends Controller
 {
     public function index($id)
     {
-        $list = Category::with('products', 'products.product')->where('id', $id)->get();
+        $list = Category::with('products', 'products.product')->where('id', $id)->orderByDesc('order')->get();
         return view('front.products', compact('list'));
     }
 

@@ -15,12 +15,10 @@ class ContactController extends Controller
 
     public function contact_post(Request $request)
     {
-        return $request;
-
         $request->validate([
             'name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
         ]);
         $contact = new Contact();
         $contact->name = $request->name;

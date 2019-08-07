@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function categories($id)
     {
-        $list = UpCategory::with('sub_categories', 'sub_categories.sub_category')->where('id', $id)->get();
+        $list = UpCategory::with('sub_categories', 'sub_categories.sub_category')->where('id', $id)->orderByDesc('order')->get();
         return view('front.category', compact('list'));
     }
 }

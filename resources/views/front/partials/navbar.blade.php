@@ -1,5 +1,6 @@
 <?php
 $company = App\Models\Company::first();
+$categories = App\Models\UpCategory::take(10)->orderByDesc('order')->get();
 ?>
 <div class="search-close">
     <i class="fa fa-close" aria-hidden="true"></i>
@@ -54,6 +55,10 @@ $company = App\Models\Company::first();
         <nav class="amado-nav">
             <ul>
                 <li class="active"><a href="{{ route('front.homepage') }}">ANASAYFA</a></li>
+                @foreach($categories as $category)
+                    <li><a href="{{ route('front.categories', $category->id) }}">{{$category->category_name}}</a></li>
+                @endforeach
+
                 <li><a href="{{ route('front.contact') }}">ILETISIM</a></li>
             </ul>
         </nav>

@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+
     }
 
     /**
@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $up_categories = UpCategory::all();
+        $up_categories = UpCategory::orderByDesc('order')->get();
         return view('front.homepage', compact('up_categories'));
     }
 
