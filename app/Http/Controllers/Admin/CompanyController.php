@@ -35,6 +35,14 @@ class CompanyController extends Controller
             $company_detail->company_img = $adres;
         }
 
+        if ($request->has('document')) {
+            $file = $request->document;
+            $name = time() . '.pdf';
+            $file->move('images/company/', $name);
+            $adres = '/images/company' . '/' . $name;
+            $company_detail->document = $adres;
+        }
+
         $company_detail->saveOrFail();
 
         return redirect()->route('admin.company_detail');

@@ -37,6 +37,14 @@
             </div>
             <div class="col-md-9">
                 <div class="form-group">
+                    <label for="document">E-Katalog</label>
+                    <input type="file" class="form-control" name="document" id="document"
+                           placeholder="Firma Logosu"
+                           value="#">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="form-group">
                     <label for="address">Firma Adı</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Adres"
                            value="{{ $company_detail->name}}"
@@ -96,7 +104,7 @@
                            value="{{ $company_detail->youtube_url }}">
                 </div>
             </div>
+            <button style=" margin-right:auto;" type="submit" class="btn btn-primary">Kaydet</button>
         </div>
-        <button style=" margin-right:auto;" type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 @endsection

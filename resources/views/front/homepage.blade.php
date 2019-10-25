@@ -19,7 +19,8 @@
 
     <div class="media-icons" style="display: none;">
         <a href="tel:{{$company->phone}}"><i class="fa fa-phone-square" aria-hidden="true"></i></a><br>
-        <a href="https://wa.me/{{$company->phone}}"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://wa.me/{{$company->phone}}&text=Merhaba%20Etkin%20Endustriyel%20ürünleriniz%20hakkında
+%20bilgi%20almak%20istiyorum"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
     </div>
 
     <style>

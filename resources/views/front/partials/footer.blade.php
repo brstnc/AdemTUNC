@@ -11,7 +11,7 @@ $company = App\Models\Company::first();
                     <br>
                     <h4 style="color:#fbb710 ">  {{ $company->name }}</h4>
                     <p style="color:#fbb710 ">Adres: {{ $company->address }}</p>
-                    <p style="color:#fbb710 ">Telefon: +9{{ $company->phone }}</p>
+                    <p style="color:#fbb710 ">Telefon: {{ $company->phone }}</p>
 
                 </div>
             </div>

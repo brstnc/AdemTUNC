@@ -55,6 +55,7 @@ $categories = App\Models\UpCategory::take(10)->orderByDesc('order')->get();
         <nav class="amado-nav">
             <ul>
                 <li class="active"><a href="{{ route('front.homepage') }}">ANASAYFA</a></li>
+                <li class=><a href="{{ route('front.homepage') }}">E-KATALOG</a></li>
                 @foreach($categories as $category)
                     <li><a href="{{ route('front.categories', $category->id) }}">{{$category->category_name}}</a></li>
                 @endforeach
